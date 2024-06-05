@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Nested Sortable</title>
+
+  <style type="text/css">
+    ol.wpk-sortable,
+    ol.wpk-sortable ol {
+      list-style-type: none;
+    }
+
+    ol.wpk-sortable li .wpk-sortable-item {
+      background: #eee;
+      border: 1px solid #ddd;
+      cursor: move;
+      margin: 0;
+      padding: 10px;
+    }
+
+    ol.wpk-sortable li .wpk-sortable-item p {
+      margin: 0;
+    }
+
+    ol.wpk-sortable .placeholder {
+      outline: 1px dashed green;
+      background: rgba(0, 128, 0, 0.105);
+    }
+
+    ol.wpk-sortable .mjs-nestedSortable-error {
+      outline: 1px dashed red;
+      background: rgba(255, 0, 0, 0.105);
+    }
+  </style>
+</head>
+
+<body>
+
+  <ol class="wpk-sortable">
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+      <ol>
+        <li>
+          <div class="wpk-sortable-item">
+            <p>Item</p>
+          </div>
+          <ol>
+            <li>
+              <div class="wpk-sortable-item">
+                <p>Item</p>
+              </div>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <div class="wpk-sortable-item">
+            <p>Item</p>
+          </div>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+    <li>
+      <div class="wpk-sortable-item">
+        <p>Item</p>
+      </div>
+    </li>
+  </ol>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js"></script>
+
+  <script>
+    $().ready(function () {
+      var ns = $('ol.wpk-sortable').nestedSortable({
+        forcePlaceholderSize: true,
+        handle: 'div',
+        helper: 'clone',
+        items: 'li',
+        opacity: .6,
+        placeholder: 'placeholder',
+        revert: 250,
+        tabSize: 25,
+        tolerance: 'pointer',
+        toleranceElement: '> div',
+        maxLevels: 4,
+        isTree: true,
+        expandOnHover: 700,
+        startCollapsed: false,
+        change: function () {
+          console.log('Relocated item');
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
